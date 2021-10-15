@@ -24,11 +24,11 @@ button:focus,
 .btn:active.focus,
 .btn:active:focus,
 .btn:focus {
-    outline: 0!important;
-    outline-color: transparent!important;
-    outline-width: 0!important;
-    outline-style: none!important;
-    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0)!important;
+    outline: 0 !important;
+    outline-color: transparent !important;
+    outline-width: 0 !important;
+    outline-style: none !important;
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
 }
 
 .dflex {
@@ -61,42 +61,74 @@ button:focus,
 
 .guide {
     margin: 2rem auto;
-}
-
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    i {
-        font-size: 1.2rem;
-        line-height: 1.125;
-    }
-    &:hover {
-        cursor: default;
-    }
+    width: 65%;
+    text-align: center;
 }
 
 .dropdowns {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    width: 65%;
+    margin: 0 auto;
+    position: relative;
     .picked {
         font-size: 0.75rem;
         span {
             text-transform: lowercase;
         }
     }
+    ul {
+        width: 100%;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 10%;
+        height: 2px;
+        background: $secondary;
+    }
+    .dropdown-item {
+        display: flex;
+        align-items: center;
+        i {
+            font-size: 1.2rem;
+            line-height: 1.125;
+        }
+        &:hover {
+            cursor: default;
+        }
+    }
+    .dropdown-toggle {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        color: #980ec5;
+        border-color: #980ec5;
+        &:hover {
+            background-color: #980ec5;
+            border-color: #980ec5;
+            color: #fff;
+        }
+        &.show {
+            background-color: #980ec5;
+            border-color: #980ec5;
+            color: #fff;
+        }
+    }
 }
 
 .tasks_wrapping-wrapper {
     position: relative;
-    width: 50%;
-    border-radius: 16px;
+    width: 65%;
+    border-radius: 10px;
     box-shadow: rgba(17, 17, 26, 0.2) 0px 0px 16px;
     .tasks_wrapper {
         display: none;
         grid-template-columns: 1fr 1fr;
-        grid-column-gap: 2rem;
+        grid-column-gap: 1rem;
         opacity: 1;
         transition: opacity 1.5s;
+        padding: 1.8rem;
     }
     .button_wrapper,
     .button_wrapper-reset {
@@ -117,7 +149,11 @@ button:focus,
         padding: 0.75rem;
         border-radius: 6px;
         border: 2px solid $success;
+        .pattern {
+            font-size: 1.3rem;
+        }
         i {
+            font-size: 1.5rem;
             margin: 0 0.2rem 0 -0.35rem;
         }
         .form-control {
@@ -132,7 +168,7 @@ button:focus,
         padding: 0.5rem 1.5rem;
         border-radius: 8px;
         &:before {
-            content: "";
+            content: '';
             position: absolute;
             top: 50%;
             left: 0;
@@ -140,7 +176,7 @@ button:focus,
             border-bottom: 2px solid $secondary;
         }
         &:after {
-            content: "";
+            content: '';
             position: absolute;
             top: 50%;
             right: 0;
@@ -154,4 +190,86 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.faq {
+    width: 65%;
+}
+
+.start,
+.send,
+.reset {
+    width: 25%;
+}
+
+@media screen and (max-width: 1200px) {
+    .dropdowns:after {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 996px) {
+    .dropdowns {
+        flex-direction: column;
+        align-items: center;
+        .dropdown:first-child {
+            margin-bottom: 1rem;
+        }
+    }
+    .start,
+    .send,
+    .reset {
+        width: 35%;
+        &:before,
+        &:after {
+            width: 30% !important;
+        }
+    }
+    .done {
+        font-size: 1.4rem !important;
+    }
+    .tasks_wrapper {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .guide,
+    .tasks_wrapping-wrapper,
+    .faq {
+        width: 100%;
+    }
+    .start,
+    .send,
+    .reset {
+        width: 45%;
+        &:before,
+        &:after {
+            width: 25% !important;
+        }
+    }
+    .guide {
+        margin: 2rem auto 1rem !important;
+    }
+    .done {
+        font-size: 1rem !important;
+    }
+    .dropdown-toggle {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    .tasks_wrapper {
+        padding: 0.8rem !important;
+    }
+    .task {
+        .pattern {
+            font-size: 1rem !important;
+        }
+    }
+    .faq {
+        .card-body {
+            font-size: 0.8rem !important;
+            padding: 0.5rem !important;
+        }
+    }
 }
